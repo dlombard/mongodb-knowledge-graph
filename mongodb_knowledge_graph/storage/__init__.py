@@ -2,9 +2,8 @@
 
 from mongodb_knowledge_graph.storage.base import StorageAdapter
 from mongodb_knowledge_graph.storage.factory import StorageFactory
-from mongodb_knowledge_graph.storage.file_adapter import FileStorageAdapter
 
-__all__ = ["StorageAdapter", "StorageFactory", "FileStorageAdapter"]
+__all__ = ["StorageAdapter", "StorageFactory"]
 
 # MongoDB adapter is imported conditionally to avoid import errors
 # when pymongo is not available
