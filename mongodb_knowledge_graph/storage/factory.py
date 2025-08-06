@@ -31,38 +31,8 @@ class StorageFactory:
         Raises:
             StorageError: If configuration is invalid or adapter creation fails.
         """
-        storage_type_str = os.environ.get("STORAGE_TYPE", "file").lower()
-        
-        try:
-            storage_type = StorageType(storage_type_str)
-        except ValueError:
-            raise StorageError(f"Unknown storage type: {storage_type_str}")
 
-        if storage_type == StorageType.FILE:
-            return await StorageFactory._create_file_storage()
-        elif storage_type == StorageType.MONGODB:
-            return await StorageFactory._create_mongodb_storage()
-        else:
-            raise StorageError(f"Unsupported storage type: {storage_type}")
-
-    @staticmethod
-    async def _create_file_storage() -> StorageAdapter:
-        """Create a file storage adapter.
-        
-        Returns:
-            An initialized file storage adapter.
-            
-        Raises:
-            StorageError: If file storage creation fails.
-        """
-        # Default to memory.json in current working directory
-        default_path = Path.cwd() / "memory.json"
-        file_path = os.environ.get("MEMORY_FILE_PATH", str(default_path))
-        
-        config = {"file_path": file_path}
-        adapter = FileStorageAdapter(config)
-        await adapter.initialize()
-        return adapter
+        return await StorageFactory._create_mongodb_storage()
 
     @staticmethod
     async def _create_mongodb_storage() -> StorageAdapter:
@@ -75,7 +45,7 @@ class StorageFactory:
             StorageError: If MongoDB storage creation fails.
         """
         try:
-            from mcp_server_memory.storage.mongodb_adapter import MongoDBStorageAdapter
+            from mongodb_knowledge_graph.storage.mongodb_adapter import MongoDBStorageAdapter
         except ImportError as e:
             raise StorageError(
                 "MongoDB storage requires pymongo. Install with: pip install pymongo"

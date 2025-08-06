@@ -78,7 +78,6 @@ net start MongoDB
 ### Environment Variables
 
 ```bash
-export STORAGE_TYPE=mongodb
 export MONGODB_URI=mongodb://localhost:27017
 export MONGODB_DATABASE=knowledge_graph_db
 export MONGODB_COLLECTION_PREFIX=kg_  # optional
@@ -90,10 +89,10 @@ export MONGODB_COLLECTION_PREFIX=kg_  # optional
 
 ```bash
 # Using uv (recommended)
-uv run python mcp_server_memory/main.py
+uv run python mongodb_knowledge_graph/main.py
 
 # Or directly with Python
-python -m mcp_server_memory.main
+python -m mongodb_knowledge_graph.main
 ```
 
 ### MCP Tools
@@ -125,7 +124,7 @@ The server exposes the following optimized tools:
 #### Basic Entity and Relation Creation
 
 ```python
-from mcp_server_memory.types import Entity, Relation
+from mongodb_knowledge_graph.types import Entity, Relation
 
 # Create entities
 entities = [
@@ -171,31 +170,13 @@ results = await search_nodes("artificial intelligence")
 # Returns: Matching entities with their connections
 ```
 
-## Performance Benefits
-
-### Before vs After Optimization
-
-| Operation | Before | After | Improvement |
-|-----------|--------|-------|-------------|
-| Add 100 entities | Load full graph → modify → save | Direct batch insert | **100x faster** |
-| Search entities | Load full graph → filter | MongoDB indexed query | **50x faster** |
-| Get graph stats | Load full graph → count | Direct count queries | **500x faster** |
-| Memory usage | Full graph in RAM | Query results only | **99% less memory** |
-
-### Scalability
-
-- ✅ **Handles 10,000+ entities** efficiently
-- ✅ **Concurrent access** support
-- ✅ **Memory usage** scales with query size, not graph size
-- ✅ **Response times** remain consistent as graph grows
-
 ## Development
 
 ### Project Structure
 
 ```
-mcp-memory-mongodb/
-├── mcp_server_memory/
+mongodb-knowledge-graph/
+├── mongodb_knowledge_graph/
 │   ├── __init__.py
 │   ├── main.py                 # FastMCP server entry point
 │   ├── knowledge_graph.py      # High-level graph operations
@@ -219,28 +200,12 @@ uv run pytest
 TEST_MONGODB=1 uv run pytest tests/test_mongodb_*
 
 # Run with coverage
-uv run pytest --cov=mcp_server_memory --cov-report=html
+uv run pytest --cov=mongodb_knowledge_graph --cov-report=html
 
 # Test specific functionality
 uv run pytest tests/test_knowledge_graph.py -v
 ```
 
-### Performance Testing
-
-```bash
-# Test with sample data
-uv run python -c "
-import asyncio
-from mcp_server_memory.storage.mongodb_adapter import MongoDBStorageAdapter
-from mcp_server_memory.knowledge_graph import KnowledgeGraphManager
-
-async def test():
-    # Your performance test code here
-    pass
-
-asyncio.run(test())
-"
-```
 
 ## MongoDB Optimization Features
 
