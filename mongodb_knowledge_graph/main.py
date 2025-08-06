@@ -14,10 +14,10 @@ from loguru import logger
 
 from mcp.server.fastmcp import FastMCP
 
-from mcp_server_memory.knowledge_graph import KnowledgeGraphManager
-from mcp_server_memory.storage.base import StorageError
-from mcp_server_memory.storage.factory import StorageFactory
-from mcp_server_memory.types import (
+from mongodb_knowledge_graph.knowledge_graph import KnowledgeGraphManager
+from mongodb_knowledge_graph.storage.base import StorageError
+from mongodb_knowledge_graph.storage.factory import StorageFactory
+from mongodb_knowledge_graph.types import (
     Entity,
     KnowledgeGraph,
     ObservationDeletion,

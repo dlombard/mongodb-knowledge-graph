@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from typing import List, Dict, Any
 
-from mcp_server_memory.storage.base import StorageAdapter
-from mcp_server_memory.storage.mongodb_adapter import MongoDBStorageAdapter
-from mcp_server_memory.types import (
+from mongodb_knowledge_graph.storage.base import StorageAdapter
+from mongodb_knowledge_graph.storage.mongodb_adapter import MongoDBStorageAdapter
+from mongodb_knowledge_graph.types import (
     Entity,
     KnowledgeGraph,
     ObservationDeletion,

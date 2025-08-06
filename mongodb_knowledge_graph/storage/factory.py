@@ -10,9 +10,9 @@ import os
 from pathlib import Path
 from typing import Dict
 
-from mcp_server_memory.storage.base import StorageAdapter, StorageError
-from mcp_server_memory.storage.file_adapter import FileStorageAdapter
-from mcp_server_memory.types import StorageType
+from mongodb_knowledge_graph.storage.base import StorageAdapter, StorageError
+from mongodb_knowledge_graph.storage.file_adapter import FileStorageAdapter
+from mongodb_knowledge_graph.types import StorageType
 
 
 class StorageFactory:

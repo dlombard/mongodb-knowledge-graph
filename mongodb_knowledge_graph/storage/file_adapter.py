@@ -12,8 +12,8 @@ import os
 from pathlib import Path
 from typing import Any, Dict
 
-from mcp_server_memory.storage.base import StorageAdapter, StorageError
-from mcp_server_memory.types import Entity, KnowledgeGraph, Relation
+from mongodb_knowledge_graph.storage.base import StorageAdapter, StorageError
+from mongodb_knowledge_graph.types import Entity, KnowledgeGraph, Relation
 
 
 class FileStorageAdapter(StorageAdapter):

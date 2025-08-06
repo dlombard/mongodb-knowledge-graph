@@ -9,7 +9,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict
 
-from mcp_server_memory.types import KnowledgeGraph
+from mongodb_knowledge_graph.types import KnowledgeGraph
 
 
 class StorageAdapter(ABC):

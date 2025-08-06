@@ -1,5 +1,5 @@
 [project]
-name = "mcp-server-memory-python"
+name = "mongodb-knowledge-graph"
 version = "0.1.0"
 description = "MCP server for enabling memory for Claude through a knowledge graph - Python implementation"
 readme = "README.md"
@@ -38,12 +38,12 @@ dev = [
 ]
 
 [project.scripts]
-mcp-server-memory-python = "mcp_server_memory:main"
+mongodb-knowledge-graph = "mongodb_knowledge_graph:main"
 
 [project.urls]
 Homepage = "https://modelcontextprotocol.io"
-Repository = "https://github.com/dlombard/mcp-server-memory-python"
-Issues = "https://github.com/dlombard/mcp-server-memory-python/issues"
+Repository = "https://github.com/dlombard/mongodb-knowledge-graph"
+Issues = "https://github.com/dlombard/mongodb-knowledge-graph/issues"
 
 [build-system]
 requires = ["hatchling"]
