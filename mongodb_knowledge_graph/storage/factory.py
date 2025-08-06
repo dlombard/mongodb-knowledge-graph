@@ -11,8 +11,6 @@ from pathlib import Path
 from typing import Dict
 
 from mongodb_knowledge_graph.storage.base import StorageAdapter, StorageError
-from mongodb_knowledge_graph.storage.file_adapter import FileStorageAdapter
-from mongodb_knowledge_graph.types import StorageType
 
 
 class StorageFactory:
