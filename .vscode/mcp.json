@@ -1,0 +1,14 @@
+{
+    "servers": {
+        "mongodb-knowledge-graph": {
+            "command": "uv",
+            "args": [
+                "run",
+                "mongodb_knowledge_graph/main.py"
+            ],
+            "env":{
+                "MONGODB_DATABASE": "knowledge_graph_db2",
+            }
+        }
+    }
+}
