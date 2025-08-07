@@ -1,20 +1,13 @@
 {
-    "mcpServers": {
-        "default-server": {
+    "servers": {
+        "mongodb-knowledge-graph": {
             "command": "uv",
             "args": [
                 "run",
-                "mcp_server_memory/main.py",
-                "run",
-                "mcp_server_memory"
+                "mongodb_knowledge_graph/main.py"
             ],
-            "env": {
-                "HOME": "/Users/dlombard",
-                "LOGNAME": "dlombard",
-                "PATH": "/Users/dlombard/.npm/_npx/5a9d879542beca3a/node_modules/.bin:/Users/dlombard/Documents/development/mcp-memory-python/node_modules/.bin:/Users/dlombard/Documents/development/node_modules/.bin:/Users/dlombard/Documents/node_modules/.bin:/Users/dlombard/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/opt/homebrew/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/dlombard/Documents/development/mcp-memory-python/.venv/bin:/opt/homebrew/bin:/Users/dlombard/.gem/bin:/Users/dlombard/.rbenv/shims:/Users/dlombard/.nvm/versions/node/v24.0.2/bin:/Users/dlombard/Library/Python/3.9/bin:/Users/dlombard/Library/Python/3.12/bin:/Users/dlombard/.scripts:/Users/dlombard/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/go/bin:/Users/dlombard/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/dlombard/.gem/bin:/Users/dlombard/.rbenv/shims:/Users/dlombard/.nvm/versions/node/v24.0.2/bin:/Users/dlombard/Library/Python/3.9/bin:/Users/dlombard/Library/Python/3.12/bin:/Users/dlombard/.scripts:/Applications/iTerm.app/Contents/Resources/utilities:/Users/dlombard/flutter/bin:/Users/dlombard/Library/Android/sdk/platform-tools:/Users/dlombard/.local/bin:/Users/dlombard/apache-maven/bin:/Users/dlombard/confluent/bin:/Users/dlombard/.docker/cli-plugins/:/Users/dlombard/.rvm/bin:/Users/dlombard/.vscode/extensions/ms-python.debugpy-2025.10.0-darwin-arm64/bundled/scripts/noConfigScripts:/Users/dlombard/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand:/Users/dlombard/flutter/bin:/Users/dlombard/Library/Android/sdk/platform-tools:/Users/dlombard/.local/bin:/Users/dlombard/apache-maven/bin:/Users/dlombard/confluent/bin:/Users/dlombard/.docker/cli-plugins/:/Users/dlombard/.rvm/bin",
-                "SHELL": "/bin/zsh",
-                "TERM": "xterm-256color",
-                "USER": "dlombard"
+            "env":{
+                "MONGODB_DATABASE": "knowledge_graph_db2",
             }
         }
     }

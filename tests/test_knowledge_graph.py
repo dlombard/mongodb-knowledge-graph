@@ -4,9 +4,9 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from mcp_server_memory.knowledge_graph import KnowledgeGraphManager
-from mcp_server_memory.storage.base import StorageAdapter
-from mcp_server_memory.types import (
+from mongodb_knowledge_graph.knowledge_graph import KnowledgeGraphManager
+from mongodb_knowledge_graph.storage.base import StorageAdapter
+from mongodb_knowledge_graph.models import (
     Entity,
     KnowledgeGraph,
     ObservationDeletion,

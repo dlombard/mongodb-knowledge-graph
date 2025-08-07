@@ -5,12 +5,12 @@ import os
 import pytest
 import pytest_asyncio
 
-from mcp_server_memory.types import Entity, KnowledgeGraph, Relation
+from mongodb_knowledge_graph.models import Entity, KnowledgeGraph, Relation
 
 # Skip all tests if pymongo is not available
 pymongo = pytest.importorskip("pymongo")
 
-from mcp_server_memory.storage.mongodb_adapter import MongoDBStorageAdapter
+from mongodb_knowledge_graph.storage.mongodb_adapter import MongoDBStorageAdapter
 
 
 @pytest.mark.skipif(
