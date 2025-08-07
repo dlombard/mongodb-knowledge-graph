@@ -7,8 +7,6 @@ adapter based on environment variables and configuration settings.
 from __future__ import annotations
 
 import os
-from pathlib import Path
-from typing import Dict
 
 from mongodb_knowledge_graph.storage.base import StorageAdapter, StorageError
 

@@ -12,14 +12,6 @@ from typing import List
 
 from pydantic import BaseModel, Field, ConfigDict
 
-
-class StorageType(str, Enum):
-    """Supported storage backend types."""
-
-    FILE = "file"
-    MONGODB = "mongodb"
-
-
 class Entity(BaseModel):
     """Represents a node in the knowledge graph.
     

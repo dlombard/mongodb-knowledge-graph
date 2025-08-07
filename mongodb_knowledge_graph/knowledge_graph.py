@@ -11,7 +11,7 @@ from typing import List, Dict, Any
 
 from mongodb_knowledge_graph.storage.base import StorageAdapter
 from mongodb_knowledge_graph.storage.mongodb_adapter import MongoDBStorageAdapter
-from mongodb_knowledge_graph.types import (
+from mongodb_knowledge_graph.models import (
     Entity,
     KnowledgeGraph,
     ObservationDeletion,

@@ -9,15 +9,18 @@ from __future__ import annotations
 
 import os
 import sys
+import logging
 from typing import List, Dict, Any
-from loguru import logger
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 from mcp.server.fastmcp import FastMCP
 
 from mongodb_knowledge_graph.knowledge_graph import KnowledgeGraphManager
 from mongodb_knowledge_graph.storage.base import StorageError
 from mongodb_knowledge_graph.storage.factory import StorageFactory
-from mongodb_knowledge_graph.types import (
+from mongodb_knowledge_graph.models import (
     Entity,
     KnowledgeGraph,
     ObservationDeletion,
@@ -44,12 +47,12 @@ async def initialize_storage() -> None:
         storage = await StorageFactory.create()
         knowledge_graph_manager = KnowledgeGraphManager(storage)
         storage_type = os.environ.get("STORAGE_TYPE", "file")
-        logger.info(f"Knowledge Graph MCP Server initialized with {storage_type} storage")
+        logging.info(f"Knowledge Graph MCP Server initialized with {storage_type} storage")
     except StorageError as e:
-        logger.error(f"Failed to initialize storage: {e}")
+        logging.error(f"Failed to initialize storage: {e}")
         # Fallback to file storage if MongoDB fails
         if os.environ.get("STORAGE_TYPE") == "mongodb":
-            logger.info("Falling back to file storage...")
+            logging.info("Falling back to file storage...")
             os.environ["STORAGE_TYPE"] = "file"
             storage = await StorageFactory.create()
             knowledge_graph_manager = KnowledgeGraphManager(storage)
@@ -279,7 +282,8 @@ async def find_path(start_entity: str, end_entity: str, max_depth: int = 5) -> L
     return await knowledge_graph_manager.find_path(start_entity, end_entity, max_depth)
 
 
-if __name__ == "__main__":
+def main():
+    """Main entry point for the MCP server."""
     import asyncio
     
     # Initialize storage before starting the server
@@ -291,3 +295,7 @@ if __name__ == "__main__":
     
     # Let FastMCP handle everything including interrupts
     mcp.run()
+
+
+if __name__ == "__main__":
+    main()

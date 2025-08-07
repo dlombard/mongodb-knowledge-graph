@@ -8,22 +8,21 @@ indexes for performance.
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional, Literal
-
-from loguru import logger
+import logging
 
 try:
-    from pymongo import MongoClient, ASCENDING
+    from pymongo import MongoClient
     from pymongo.collection import Collection
     from pymongo.database import Database
     from pymongo.errors import ConnectionFailure, DuplicateKeyError, PyMongoError
-    from pymongo.results import InsertManyResult, DeleteResult, UpdateResult
+    from pymongo.results import InsertManyResult, DeleteResult
 except ImportError as e:
     raise ImportError(
         "PyMongo is required for MongoDB storage. Install with: pip install pymongo"
     ) from e
 
 from mongodb_knowledge_graph.storage.base import StorageAdapter, StorageError
-from mongodb_knowledge_graph.types import Entity, KnowledgeGraph, Relation
+from mongodb_knowledge_graph.models import Entity, KnowledgeGraph, Relation
 
 
 class MongoDBStorageAdapter(StorageAdapter):
@@ -632,7 +631,7 @@ class MongoDBStorageAdapter(StorageAdapter):
             raise StorageError("MongoDB connection not initialized")
         
         try:
-            logger.info("GET_CONNECTED_ENTITIES:")
+            logging.info("GET_CONNECTED_ENTITIES:")
             # Find all relations involving this entity
             relations = await self.get_entity_relations(entity_name)
             
@@ -672,7 +671,7 @@ class MongoDBStorageAdapter(StorageAdapter):
             raise StorageError("MongoDB connection not initialized")
         
         try:
-            logger.info("GET_SUBGRAPH:")
+            logging.info("GET_SUBGRAPH:")
             # Use $graphLookup for graph traversal
             relations_collection_name = f"{self.collection_prefix}relations"
             pipeline = [
@@ -765,7 +764,7 @@ class MongoDBStorageAdapter(StorageAdapter):
             raise StorageError("MongoDB connection not initialized")
         
         try:
-            logger.info("FIND_PATH:")
+            logging.info("FIND_PATH:")
             # Simple BFS implementation
             visited = {start}
             queue = [(start, [start])]
@@ -816,7 +815,7 @@ class MongoDBStorageAdapter(StorageAdapter):
             raise StorageError("MongoDB connection not initialized")
 
         try:
-            logger.info("LOAD_GRAPH:")
+            logging.info("LOAD_GRAPH:")
             # Load all entities
             entity_docs = list(self.entities_collection.find({}, {"_id": 0}))
             entities = []
@@ -854,7 +853,7 @@ class MongoDBStorageAdapter(StorageAdapter):
             raise StorageError("MongoDB connection not initialized")
 
         try:
-            logger.info("SAVE_GRAPH:")
+            logging.info("SAVE_GRAPH:")
             # Clear existing data
             self.entities_collection.delete_many({})
             self.relations_collection.delete_many({})

@@ -1,8 +1,7 @@
-"""MCP server for enabling memory for Claude through a knowledge graph.
+"""MongoDB Knowledge Graph MCP Server.
 
-This package provides a Memory Context Protocol (MCP) server that implements
-persistent memory using a knowledge graph structure. It supports multiple
-storage backends including file-based JSON Lines and MongoDB.
+High-performance MCP server providing persistent memory for Claude through
+an optimized MongoDB-based knowledge graph storage system.
 """
 
 __version__ = "0.1.0"
