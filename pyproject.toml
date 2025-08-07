@@ -1,6 +1,6 @@
 [project]
 name = "mongodb-knowledge-graph"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server for enabling memory for Claude through a knowledge graph - Python implementation"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -74,7 +74,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["mcp_server_memory"]
+known_first_party = ["mongodb_knowledge_graph"]
 
 [tool.mypy]
 python_version = "3.10"
@@ -108,13 +108,13 @@ python_functions = ["test_*"]
 addopts = [
     "--strict-markers",
     "--disable-warnings",
-    "--cov=mcp_server_memory",
+    "--cov=mongodb_knowledge_graph",
     "--cov-report=term-missing",
     "--cov-report=html",
 ]
 
 [tool.coverage.run]
-source = ["mcp_server_memory"]
+source = ["mongodb_knowledge_graph"]
 omit = [
     "*/tests/*",
     "*/test_*",
